@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>小球上下移动</title>
+</head>
+<!-- 当按键后 事件源 传递一个event对象给 事件监听者 并执行 test函数 调用 -->
+<body onkeydown="test()">
+	<canvas id="test" style="width:400px;height: 300px;border:1px solid red"></canvas>
+
+	<script type="text/javascript">
+
+
+
+	var canva1= document.getElementById("test");
+
+	var cxt = canva1.getContext("2d");
+    
+
+	cxt.fillStyle="#FF0000";
+    cxt.beginPath();
+
+	cxt.arc(30,30,10,0,360,false);
+
+	cxt.closePath();
+
+	cxt.fill();
+
+
+	var ballX = 60;
+	var ballY = 60 ;
+
+	function drawBall()
+	{
+		//这里有一个 
+		//如果你在函数体中 没有定义 就直接使用变量 就以为你在使用的是全局变量
+		//如果你在函数体中 定义了 才使用该变量 说明使用的局部变量
+		cxt.fillStyle="#00FF00";
+		cxt.beginPath();
+		cxt.arc(ballX,ballY,10,360,0,true);
+		cxt.closePath();
+		cxt.fill();
+
+
+
+	}
+		/*键盘 操作 w 向上 d 向右 a向左 s向下
+
+		当我们按下一个键时 会触发 一个 js事件 onkeydown
+
+			这里需要考虑 html 中 的 event 对象
+
+			event对象 支持很多事件 我们这里需要onkeydown 符合业务需求
+
+			并把这个onkeydown 事件 添加监听 给body 标签
+
+		*/
+		function test(e)
+		{
+			// alert("你按下键了");
+			//如何分辨玩家按下的是什么键呢
+			//当按下键 出发事件 事件交给监听者
+			//监听者 处理 event对象
+
+			var code = event.keyCode;
+			//这里返回的就是键盘上键对应的asc码的值
+
+
+			// alert(code);
+
+			switch (code)
+			{
+
+				case 87 :
+				{
+					// alert("上");
+					ballY--;
+					break;
+				}
+				
+				case 68 :
+				{
+					// alert("右");
+					ballX++;
+					break;
+				}
+				
+				case 83 :
+				{
+					// alert("下");
+					ballY++;
+					break;
+				}
+				case 65 :
+				{
+					// alert("左");
+					ballX--;
+					break;
+				}
+
+			}
+
+        cxt.clearRect(0,0,400,300);
+		//重绘小球位置 重绘 前 先清屏 
+		
+
+		drawBall();
+
+		}
+
+
+	</script>
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>tankMap</title>
+</head>
+<body>
+
+<canvas id="tankMap" style="width:400px; height:300px; border:1px solid red">
+	
+</canvas>
+
+
+<script type="text/javascript">
+
+	//画出tank  的到画布
+
+	var canvas = document.getElementById("tankMap")	;
+
+
+	//得到 画笔
+
+	var cxt = canvas.getContext("2d");
+
+   var tankX=30;
+   var tankY=30;
+
+	//设置要画的tank颜色
+
+	cxt.fillStyle="#DED284";
+
+	//先画静态的tank 后面再让tank动起来
+	cxt.fillRect(tankX,tankY,5,30);
+
+	//画出右侧矩形
+	cxt.fillRect(tankX+20+5,tankY,5,30);
+
+   cxt.fillRect(tankX+6,tankY+5,18,20);
+	//画圆
+	cxt.beginPath();
+	cxt.fillStyle="#FFD972";
+	/*画不圆的情况 顺时针 true 要 360 到 0  不能0 到 360*/
+	cxt.arc(tankX+15,tankY+14,7,360,0,true);
+	cxt.closePath();
+	cxt.fill();
+
+	//画出直线
+
+	cxt.beginPath();
+	cxt.lineWidth=2;
+	cxt.strokeStyle="#FFD972";
+	cxt.moveTo(tankX+15,tankY+14);
+	cxt.lineTo(tankX+15,tankY);
+	cxt.closePath();
+	cxt.stroke();
+
+
+    
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+</body>
+</html>
