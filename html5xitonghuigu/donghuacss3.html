@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>css3实现动画以前借助flash</title>
+	<style >
+
+	div{
+		background-color: red;
+	}
+
+	@-webkit-keyframes mycolor {
+		0% {
+			background-color: red;
+		}
+		40% {
+			background-color: darkblue;
+		}
+
+		70% {
+			background-color: yellow;
+		}
+		100% {
+			background-color: red;
+		}
+	}
+	div:hover {
+		-webkit-animation-name:mycolor;
+		-webkit-animation-duration:5;
+		-webkit-animation-timing-function:linear;
+	}
+
+	</style>
+</head>
+<body>
+	
+	<div > 动画效果 css3</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,106 @@
+html的历史回顾
+ 
+
+ 关注html5 网站 http://www.html5cn.org
+
+html5的出现
+考虑浏览器的富媒体的展现
+文本 图片 动画 交互动画 网页游戏
+flex flash sliverlight html5
+把java版本的坦克大战转换为html5 低版本浏览器不支持
+html2.0 1994年；1999html4.0；xhtml1.0 ；
+xhtml2.0 w3c有很多问题 ；
+opera chrome firefox 2004提出html5.0草案;
+2008年 w3c 和浏览器厂商 一起 敲定html5.0 的决议；
+HTML5中国 HTML5研究小组
+
+-----------------------------------------------
+
+
+html5 支持了 javascript的API 和 css3的选择器
+html5 约等于 html+css3+javascript
+一句话html5 支持了css3 的强大选择器和动画等功能
+支持javascript很多新的函数
+所以html5 就很强大了
+
+
+----------------------------------------------
+html5 新增内容 梳理
+1.增加了canvas标签 某种程度上替代部分flash功能 。画布 可以在这里绘制图形 
+
+2.增加了header 和footer 标签 做到内容与结构的分离
+利于seo
+
+3.增加了video 和 audio 标签 以前只能通过flash
+
+方便音视频的嵌入
+video 只支持 ogg 格式 和 mp4 格式
+
+
+4. 增加离线存储
+
+传统的网站 浏览器 访问网站 如果不能上网 则网页就无法正常浏览
+
+浏览器html5 访问网站 css/js/图片/视频 
+浏览器存储url地址清单
+将资源缓存到本地 使用的技术术语 web storage apls
+
+
+5. 语言识别 图像识别
+
+6.html5 支持强大的css3
+
+-----------------------
+html5 新增了标签 也 遗弃了一些标签 因为这些标签的效果
+是可以通过css3实现的
+第一个：
+font 
+<font size="7">font1</font>
+<span style="font-size:20px;color:red">font css</span>
+第二个：
+遗弃的表现性元素
+big center  font  s strike tt u
+
+遗弃的框架类元素
+frame frameset noframes 但是html5还支持iframe
+
+
+遗弃属性类的标签
+align／body标签上的link vlink alink text 属性 bgcolor height
+width、、
+
+iframe元素上的scrolling属性 valign hspace vspace
+
+table标签上的cellpadding cellspacing border属性
+
+header标签上的profile属性
+
+img 和 iframe元素的longdesc属性
+
+
+addr取代acronym 用于表示缩写
+
+object取代了applet java语言applet小游戏
+
+ul取代dir
+
+
+
+-----------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

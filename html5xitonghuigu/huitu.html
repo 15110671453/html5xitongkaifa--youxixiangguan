@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+
+<canvas id="can1" width="700px" height="800px" style="border:1px solid red"></canvas>
+
+<script type="text/javascript">
+	//画图是要使用 javascript api的
+	//是因为html5支持了很多javascriptapi 所以html5强大了
+
+	//1.得到画布
+
+	var canvas1 = document.getElementById("can1");
+
+	//2.得到上下文引用 画笔啊 目前只支持2d 绘图
+	var cxt = canvas1.getContext("2d");
+
+	//3.画出直线
+	//设置当前路径 告诉画笔起点 先放在20 20 点去
+	cxt.moveTo(20,20);
+	//告诉画笔终点
+	cxt.lineTo(20,90);
+	//开始画线
+	cxt.stroke();
+
+	//画出一个填充的三角形--》路径的概念出现
+	//开始新路径
+	cxt.beginPath();
+	cxt.moveTo(40,20);
+	cxt.lineTo(40,90);
+	cxt.lineTo(80,90);
+	// 闭合路径
+	cxt.closePath();
+	//闭合后 需要填充 发现不填充 看不到图形 但是这个图形是实心 如何空心的
+	cxt.fill();
+
+
+	cxt.beginPath();
+	cxt.moveTo(100,20);
+	cxt.lineTo(100,90);
+	cxt.lineTo(180,90);
+	// 闭合路径
+	cxt.closePath();
+	//闭合后 需要填充 发现不填充 看不到图形 但是这个图形是实心 如何空心的
+	cxt.stroke();
+
+
+	//画出矩型 stroke 是画线 fill是填充
+	//参数 前两个为起点坐标x y 后两个为矩形的宽度 高度    //填充矩形
+    
+	 cxt.strokeRect(20,120,50,50);
+
+
+
+    //填充矩形
+     //如果要希望改变填充的颜色 
+     cxt.fillStyle="#00FF00";
+     cxt.fillRect(80,120,50,50);
+
+     //画圆形 使用arc 函数 六个参数
+     //arc 函数的参数 x y 代表圆心 radius 代表半径
+     // 第四个参数 代表 起点弧度位置 第五个结束的弧度 最后是瞬时针
+     //还是逆时针
+
+     //发现画矩形 却不需要 写beginpath true顺时针旋转
+     cxt.beginPath();
+     cxt.arc(80,200,20,20,true);
+     cxt.closePath();
+     //画笔换个颜色
+     cxt.fillStyle="#0000FF";
+     // 还需要 填充 还是 画线 才能显示
+     cxt.stroke();
+
+
+
+     //发现画矩形 却不需要 写beginpath true顺时针旋转
+     cxt.beginPath();
+     cxt.arc(140,200,20,20,true);
+     cxt.closePath();
+     // 还需要 填充 还是 画线 才能显示
+
+     cxt.fill();
+
+     //把图片绘到画布
+
+     //第一个步骤 先创建img对象
+     var img1 = new Image();
+     //指定img源
+      img1.src="test.jpg";
+      //表示加载完毕后在绘制图片到指定位置
+      img1.onload= function(){
+
+      	cxt.drawImage(img1,80,270,554/2,750/2);
+      }
+
+      //在画布上绘制文字 
+
+      var content = "我爱 北京 更爱 山西";
+      cxt.font="30px 楷体";
+      cxt.fillStyle="#0000FF";
+      cxt.fillText(content,230,200);
+
+
+
+       var content = "我爱 北京 更爱 山西";
+       //字体需要操作系统安装
+      cxt.font="30px ";
+      cxt.fillStyle="#0000FF";
+      //参数第一 文本 第二 三参数 是 横纵坐标
+      cxt.fillText(content,230,260);
+
+
+
+
+
+
+</script>
+	
+</body>
+</html>

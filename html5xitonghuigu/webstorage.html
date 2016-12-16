@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>html本地存储之webstorage</title>
+	<style type="text/css">
+
+	#content {
+		border: 1px solid #3D19DD;
+		width: 600px;
+		text-align: center;
+		padding: 10px 0;
+	}
+
+
+	#content input {
+		margin-top: 10px;
+	}
+
+	</style>
+</head>
+<body>
+
+	<div id="content">
+		
+	<label for="user_num">学号</label>
+	<input type="text" id="user_num" name="user_num"/> 
+	<br/>
+
+	<label for="user_name">姓名</label>
+	<input type="text" id="user_name" name="user_name"/> 
+	<br/>
+	
+	<label for="user_sex">性别</label>
+	<input type="text" id="user_sex" name="user_sex"/> 
+	<br/>
+
+	<label for="grade">班级</label>
+	<input type="text" id="grade" name="grade"/> 
+	<br/>
+
+
+	<input type="button" onclick="save()" value="添加表单" /> 
+	<br/>
+
+	<label for="search_num">输入学号:</label>
+	<input type="text" id="search_num" name="search_num"/> 
+
+	<input type="button" onclick="find()" value="查找学生信息" /> 
+	<br/>
+	<p id="find_result"><br/></p>
+	<br/>
+	<input type="button" onclick="show()" value="显示所有">
+	<div id="list">
+		
+	</div>
+
+
+
+
+
+	</div>
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+
+function save() {
+
+	var user_num = document.getElementById("user_num").value;
+
+	var user_nameElement = document.getElementById("user_name").value;
+
+	var gradeElement = document.getElementById("grade").value;
+
+	var sexElement = document.getElementById("user_sex").value;
+
+	var msg = {
+		user_name: user_nameElement,
+		grade: gradeElement,
+		sex: sexElement,
+	};
+
+	localStorage.setItem(user_num,JSON.stringify(msg))
+
+
+
+}
+
+function find() {
+
+	var user_num = document.getElementById("search_num").value;
+	var str = localStorage.getItem(user_num);
+
+	var msg = JSON.parse(str);
+
+	var find_result = document.getElementById("find_result");
+
+	find_result.innerHTML = "学号为:"+user_num+"的基本信息:姓名:"+msg.user_name+"，年级:"+msg.grade+",性别:"+msg.sex;
+
+}
+	
+	function show(){
+
+		var list = document.getElementById("list");
+
+		if (localStorage.length>0) {
+
+
+			var result = "<table border='1' style='width:300px; margin:0 auto;'";
+
+			result += "<tr><td>学号</td><td>年级</td><td>班级</td><td>性别</td></tr>";
+
+			for (var i = 0;i<localStorage.length;i++) {
+				
+				var user_num = localStorage.key(i);
+
+				var str = localStorage.getItem(user_num);
+
+				var msg = JSON.parse(str);
+
+				result += "<tr><td>"+user_num+"</td><td>"+msg.user_name+"</td><td>"+msg.grade+"</td><td>"+msg.sex+"</td></tr>";
+
+			}
+
+			result += "</table>";
+
+			list.innerHTML = result;
+
+
+		}else{
+
+
+			list.innerHTML = "当前还没有数据";
+		}
+
+
+
+	}
+
+//该函数接收两个参数，一个是key值，还有一个是图片的路径，通过setImg(“img1”,”1.jpg”)保存图片到localStorage，我们可以查看Local Storage的存储情况：
+function setImg(key,src) {
+
+	var img = document.createElement('img');
+
+	//当图片加载完成的时候触发回调
+
+	img.addEventListener("load",function(){
+		var imgCanvas = document.createElement("canvas");
+
+		imgContext = imgCanvas.getContext("2d");
+
+		//确保canvas元素大小和图片的尺寸一致
+
+
+		imgCanvas.width = this.width;
+		imgCanvas.height = this.height;
+
+		//渲染图片到canvas 中
+		imgContext.drawImage(this,0,0,this.width,this.height);
+		//用data url 形式取出
+		img.crossOrigin = "*";//防止跨域取照片出错
+
+		var  imgAsDataURL = imgCanvas.toDataURL("image/png");
+
+		//保存到本地存储中
+		try {
+			localStorage.setItem(key,imgAsDataURL);
+		} catch(e) {
+			alert("保存失败！请重试。。。");
+		}
+
+	},false);
+
+	img.src = src ;
+
+}
+function getImg(key)
+{
+
+
+	var srcStr = localStorage.getItem(key);
+	var imgObj = document.createElement('img');
+	imgObj.src = srcStr;
+	document.body.appendChild(imgObj);
+}
+
+</script>
+
+
+
+
+
+
+
+	
+</body>
+</html>

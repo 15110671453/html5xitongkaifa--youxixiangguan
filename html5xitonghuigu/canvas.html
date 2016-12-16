@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>新增标签1canvas使用</title>
+</head>
+<body>
+	<canvas id="can1" width="500px" height="400px" style="border: 1px solid red">
+		
+	</canvas>
+	<script type="text/javascript">
+		//在画布上画图
+		//先得到画布
+		var canvas = document.getElementById("can1");
+
+		//2 的到上下文环境 当作画笔 下面用它提供的绘制图形的方法来绘制图形[object CanvasRenderingContext2D]
+		var cxt = canvas.getContext("2d");
+
+		// alert(cxt);
+		//修改填充颜色 红色
+		cxt.fillStyle="#FF0000";
+		// 默认填充矩形黑色
+		cxt.fillRect(10,10,30,30);
+
+
+
+
+
+
+
+
+
+
+
+
+	</script>
+	
+</body>
+</html>

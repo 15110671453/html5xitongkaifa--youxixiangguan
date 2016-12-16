@@ -1,0 +1,32 @@
+使用语音输入作用有：
+1.提供除了键盘和鼠标的另一个输入方法，针对pc用户，当键盘不可用时也可以使用语音输入。
+2.为手机用户提供更加方便的输入方法。
+
+lang
+这玩意可以强制输入框里面的语音的语言种类，例如
+<input type="text" x-webkit-speech lang="zh-CN"/>
+
+1.支持的浏览器
+x-webkit-speech是webkit内核浏览器的私有属性(废话)。但现在只能在google的chrome 11以上才能使用。
+实现过程大概是捕捉到语音后，数据发送到google的服务器进行语音识别，然后返回结果。所以没有足够强大大的研发能力和服务器资源，真没法支持这个服务。
+作为普通话不标准经常被别人吐槽的人，使用语音搜索还是能十分准确地返回关键词，我顿时感动得一塌糊涂。
+2.支持的标签
+输入标签有input和textarea，实际上目前只有input支持。
+3.检测浏览器是否支持
+1if (document.createElement("input").webkitSpeech === undefined) { 
+2    alert("Speech input is not supported in your browser."); 
+3} 
+4.直接使用
+为input标签加上x-webkit-speech属性
+1<input type="search" x-webkit-speech />
+捕捉到语音输入后会直接将关键词填入到输入框里。
+5.监听输入
+若要监听输入变化以便做其他处理，使用onwebkitspeechchange属性添加处理函数。
+1<input type="search" x-webkit-speech onwebkitspeechchange="onChange()"/>
+1<script type="text/JavaScript">
+2    function onChange() {
+3        alert('changed');
+4    }
+5</script>
+6.注意：
+如果原input中value不为空，输入会直接添加在原有文字后面。既然用webkit就要用placeholder了，不要再使用value为作输入提示了。
